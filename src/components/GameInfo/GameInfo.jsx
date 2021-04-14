@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 class GameInfo extends Component {
     render() {
+        console.log(this.props)
         const { isLow, winScore, totalGame } = this.props;
         return (
             <div>
