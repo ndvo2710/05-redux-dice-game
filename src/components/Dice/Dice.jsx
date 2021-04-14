@@ -1,13 +1,29 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class Dice extends Component {
+class Dice extends Component {
+    renderDice = () => {
+        const { diceArray } = this.props;
+        return diceArray.map((dice, index) => {
+            return (
+                <img key={index} style={{ width: 50, height: 50 }} src={dice.img} alt={`${dice.face}.png`} className="ml-2" />
+            )
+        })
+    }
+
     render() {
         return (
             <div>
-                <img style={{ width: 50, height: 50 }} src="./img/1.png" alt="1.png" className="ml-2" />
-                <img style={{ width: 50, height: 50 }} src="./img/5.png" alt="5.png" className="ml-2" />
-                <img style={{ width: 50, height: 50 }} src="./img/6.png" alt="6.png" className="ml-2" />
+                {this.renderDice()}
             </div>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        diceArray: state.diceGameReducer.diceArray,
+    }
+}
+
+export default connect(mapStateToProps)(Dice);

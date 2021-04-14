@@ -1,15 +1,27 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class GameInfo extends Component {
+class GameInfo extends Component {
     render() {
+        const { isLow, winScore, totalGame } = this.props;
         return (
             <div>
 
-                <div className="display-4">YOU CHOOSE: <span className="text-danger">High</span></div>
-                <div className="display-4">WIN: <span className="text-success">10</span></div>
-                <div className="display-4">LOSE: <span className="text-primary">2</span></div>
+                <div className="display-4">YOU CHOOSE: <span className="text-danger">{isLow ? 'Low' : 'High'}</span></div>
+                <div className="display-4">WIN: <span className="text-success">{winScore}</span></div>
+                <div className="display-4">Total Game: <span className="text-primary">{totalGame}</span></div>
 
             </div>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        isLow: state.diceGameReducer.isLow,
+        winScore: state.diceGameReducer.winScore,
+        totalGame: state.diceGameReducer.totalGame,
+    }
+}
+
+export default connect(mapStateToProps)(GameInfo);
