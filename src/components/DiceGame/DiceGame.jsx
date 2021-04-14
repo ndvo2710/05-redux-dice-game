@@ -32,7 +32,9 @@ class DiceGame extends Component {
 
                 <div className="game-info text-center">
                     <GameInfo />
-                    <button className="btn btn-success p-2 display-4 mt-5">
+                    <button onClick={() => {
+                        this.props.playGame()
+                    }} className="btn btn-success p-2 display-4 mt-5">
                         Play Game
                     </button>
                 </div>
@@ -51,6 +53,13 @@ const mapDispatchToProps = (dispatch) => {
             };
             //  send to reducer
             dispatch(action);
+        },
+        playGame: () => {
+            // create action
+            let action = {
+                type: "PLAY_GAME"
+            }
+            dispatch(action)
         }
     }
 }

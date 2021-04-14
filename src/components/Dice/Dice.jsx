@@ -6,7 +6,7 @@ class Dice extends Component {
         const { diceArray } = this.props;
         return diceArray.map((dice, index) => {
             return (
-                <img key={index} style={{ width: 50, height: 50 }} src={dice.img} alt={`${dice.face}.png`} className="ml-2" />
+                <img key={index} style={{ width: 50, height: 50 }} src={dice.img} alt={`${dice.value}.png`} className="ml-2" />
             )
         })
     }
