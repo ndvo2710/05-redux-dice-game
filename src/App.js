@@ -1,9 +1,12 @@
 import "./App.css";
+import DiceGame from "./components/DiceGame/DiceGame";
 
 function App() {
-  return <div className="App">
-	  123
-  </div>;
+  return (
+    <div className="App">
+      <DiceGame />
+    </div>
+  );
 }
 
 export default App;
